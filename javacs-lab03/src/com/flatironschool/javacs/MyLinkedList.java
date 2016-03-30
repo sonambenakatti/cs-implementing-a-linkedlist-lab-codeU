@@ -1,7 +1,7 @@
 /**
  * 
  */
-//package com.flatironschool.javacs;
+package com.flatironschool.javacs;
 
 import java.util.Arrays;
 import java.util.Collection;
