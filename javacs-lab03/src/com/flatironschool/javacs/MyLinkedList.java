@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.flatironschool.javacs;
+//package com.flatironschool.javacs;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -144,9 +144,17 @@ public class MyLinkedList<E> implements List<E> {
 		return node;
 	}
 
-	@Override
+	//Returns the index of the first occurrence of the specified 
+	//element in this list, or -1 if this list does not contain the element.
 	public int indexOf(Object target) {
-		// TODO: fill this in
+		Node node = head;
+        for (int i = 0; i < size; i++) {
+        	if(equals(target, node.cargo)){
+        		return i;
+        	}
+        	node = node.next;
+        }
+
 		return -1;
 	}
 
