@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.flatironschool.javacs;
 
 import java.util.Arrays;
@@ -85,7 +82,22 @@ public class MyLinkedList<E> implements List<E> {
 
 	@Override
 	public void add(int index, E element) {
-		// TODO: fill this in
+		if(index < 0 || index > size()){
+			throw new IndexOutOfBoundsException();
+		}
+		
+		//if at the end of the list, call other add method
+		if(index == (size - 1) || head == null){
+			add(element);
+		}else if(index == 0){
+			head = new Node(element, head);
+			size++;
+		} else {
+			Node node = getNode(index - 1);
+			Node addedNode = new Node(element, node.next);
+			node.next = addedNode;
+			size++;
+		}
 	}
 
 	@Override
@@ -209,7 +221,21 @@ public class MyLinkedList<E> implements List<E> {
 
 	@Override
 	public boolean remove(Object obj) {
-		// TODO: fill this in
+		int index = indexOf(obj);
+		if(index != -1){
+			if (index == 0) {
+				head = head.next;
+				size--;
+				return true;
+			} else {
+				//get the previous node
+				Node node = getNode(index - 1);
+				//set it to the node after obj
+				node.next = node.next.next;
+				size--;
+				return true;
+			}
+		}
 		return false;
 	}
 
